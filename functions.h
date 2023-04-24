@@ -11,4 +11,8 @@ int atoi(char *s);
 
 bool parse_line(char *buffer, int buffer_size, int token, char *s);
 
+int get_line(char *s);
+
+int mystrcmp(char *s, char *t);
+
 #endif

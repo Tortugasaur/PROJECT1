@@ -6,17 +6,17 @@
 
 #define MAX_TEAMS 50
 
-struct columns {
-  char name[20];
-  char division[20];
+struct tokens {
+  int division;
+  int team;
   int wins;
   int losses;
-  int ot_shootout_losses;
+  int overtime_shootout_losses;
   int points;
 };
 
 struct team {
-  char name[20];
+  char name[3];
   char division[20];
   int wins;
   int losses;
@@ -27,13 +27,22 @@ struct Team teams[MAX_TEAMS];
 int num_teams = 0;
 
 void load(char* filename) {
-  
+  FILE* fp = fopen(filename, "r");
+  char buffer[100];
+
+  for (int i = 1; i < 7; i++) {
+    parse_line(buffer, 256, i, fp);
+    //if () {
+
+    //}
+  }
+  fclose(fp);
 }
 
 int main() {
-  FILE *fp;
   char filename[] = "hockey-stats.csv";
-  char buffer[256];
+
+  load(filename);
 
   char input[100];
   int input_len;
@@ -47,13 +56,12 @@ int main() {
     printf("5. Quit program.\n");
     input_len = krgetline(input, 100);
   }
-  
-  fp = fopen(filename, "r");
+  return 0;
 
-  if (fp == NULL) {
+  /*if (fp == NULL) {
     printf("Unable to open file '%s'\n", filename);
     return 1;
-  }
+  }*/
 
   switch (atoi(input)) {
     case 1:

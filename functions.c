@@ -30,6 +30,12 @@ int atoi(char *s) {
   return total;
 }
 
+/// @brief copies the string at position token from s
+/// @param buffer char pointer to store parsed string
+/// @param buffer_size size of given buffer
+/// @param token index of string
+/// @param s char pointer for given line
+/// @return if there was data copied at the token
 bool parse_line(char *buffer, int buffer_size, int token, char *s) {
     int i = 0, j = 0, k = 0, token_count = 0;
     int line_len = strlen(s);
@@ -49,4 +55,22 @@ bool parse_line(char *buffer, int buffer_size, int token, char *s) {
     buffer[j] = '\0';
     
     return (j > 0);
+}
+
+int get_line(char *buffer, int buffer_size, char *s) {
+  char *temp = s;
+  while (temp != "\n" ||
+      temp != "\0") {
+    buffer = temp;
+    buffer++; temp++;
+  }
+  return temp - s;
+}
+
+int mystrcmp(char *s, char *t) {
+	int i = 0;
+	for (;s[i] == t[i]; i++) {
+		if (s[i] == '\0')
+			return 0;
+	return s[i] - t[i];
 }
